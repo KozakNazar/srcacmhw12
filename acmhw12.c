@@ -57,6 +57,12 @@ int main(void){
 	sort(outputData, inputData);
 	printVector(outputData, 0);
 
-	getchar();
+#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+	//printf("Press Enter to continue . . .");
+	//(void)getchar();
+#elif defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)    
+	system("pause");
+#else
+#endif
 	return EXIT_SUCCESS;
 }
